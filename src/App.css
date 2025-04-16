@@ -1,0 +1,7 @@
+.main-block {
+  background-color: #8e9294;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
