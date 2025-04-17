@@ -88,20 +88,32 @@ export default function HorizontalLinearStepper() {
     };
 
     const handleSecondStep = () => {
-        console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
+        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+        let departmentProtocol
+        if (departmentProtocolNumber !== null && departmentProtocolDate !== null) {
+           departmentProtocol = {
+               number: departmentProtocolNumber,
+               date: departmentProtocolDate,
+               timeZone: timeZone
+           }
+        } else {
+             departmentProtocol = null
+        }
+        let commissionProtocol
+        if (commissionProtocolNumber !== null && commissionProtocolDate !== null) {
+            commissionProtocol = {
+                number: commissionProtocolNumber,
+                date: commissionProtocolDate,
+                timeZone: timeZone
+            }
+        } else {
+            commissionProtocol = null
+        }
         sendReportInfo(
             localStorage.getItem("sessionId"),
             {
-                departmentProtocol: {
-                    number: departmentProtocolNumber,
-                    date: departmentProtocolDate,
-                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
-                },
-                commissionProtocol: {
-                    number: commissionProtocolNumber,
-                    date: commissionProtocolDate,
-                    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
-                },
+                departmentProtocol: departmentProtocol,
+                commissionProtocol: commissionProtocol,
                 year: year,
                 creators: creators
             }
