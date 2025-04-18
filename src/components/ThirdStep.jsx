@@ -43,6 +43,7 @@ function ThirdStep({setDepartment, setDiscipline, getAll, setGetAll}) {
             />
             <FormGroup>
                 <FormControlLabel
+                    sx={{ color: 'black' }}
                     required
                     control={<Checkbox value={getAll} onChange={(e) => setGetAll(e.target.checked)}/>}
                     label="Все дисциплины"/>
