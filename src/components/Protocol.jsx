@@ -47,7 +47,9 @@ function Protocol({protocolLabel, setProtocolNumber, setProtocolDate}) {
                                 setProtocolDate(newDate)
                                 setDate(newDate)
                             }}
-                            sx={{backgroundColor: '#d4d0cf', borderRadius: '5px', margin: '5px'}}
+                            sx={
+                                {backgroundColor: '#d4d0cf', borderRadius: '5px', margin: '5px auto', maxWidth: 220}
+                            }
                         />
                     </LocalizationProvider>
                 </Box>
