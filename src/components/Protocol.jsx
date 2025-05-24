@@ -20,6 +20,7 @@ function Protocol({protocolLabel, setProtocolNumber, setProtocolDate}) {
                 <Box sx={{display: 'flex', flexDirection: 'column', m: 1}}>
                     <TextField
                         required
+                        error={number < 0}
                         id="filled-number"
                         label="Номер протокола"
                         type="number"
