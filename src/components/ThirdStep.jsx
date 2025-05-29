@@ -33,15 +33,15 @@ function ThirdStep({setDepartment, setDiscipline, getAll, setGetAll}) {
                 onChange={(e, newValue) => setDepartment(newValue)}
                 renderInput={(params) => <TextField {...params} label="Кафедра"/>}
             />
-            <Autocomplete
-                disablePortal
-                required
-                options={disciplines}
-                sx={{backgroundColor: '#d4d0cf', borderRadius: '5px', minWidth: 300, marginTop: 1}}
-                onChange={(e, newValue) => setDiscipline(newValue)}
-                renderInput={(params) => <TextField {...params} label="Дисциплина"/>}
-            />
             <FormGroup>
+                <Autocomplete
+                    disablePortal
+                    required
+                    options={disciplines}
+                    sx={{backgroundColor: '#d4d0cf', borderRadius: '5px', minWidth: 300, marginTop: 1}}
+                    onChange={(e, newValue) => setDiscipline(newValue)}
+                    renderInput={(params) => <TextField {...params} label="Дисциплина"/>}
+                />
                 <FormControlLabel
                     sx={{ color: 'black' }}
                     required

@@ -12,8 +12,8 @@ import {LinearProgress} from "@mui/material";
 
 export default function FilesList({department, discipline, getAll}) {
     const [fileInfo, setFileInfo] = React.useState(null);
-    const [loading, setLoading] = React.useState(false);
     const [loadingFiles, setLoadingFiles] = React.useState(true);
+    const [loadingIndex, setLoadingIndex] = React.useState(null)
 
     useEffect(() => {
         generateFiles(
@@ -36,8 +36,8 @@ export default function FilesList({department, discipline, getAll}) {
         })
     }, [department, discipline, getAll]);
 
-    const handleToggle = (value) => {
-        setLoading(true);
+    const handleToggle = (value, index) => {
+        setLoadingIndex(index);
         download(value)
             .then((res) => {
                 const downloadUrl = window.URL.createObjectURL(
@@ -49,11 +49,11 @@ export default function FilesList({department, discipline, getAll}) {
                 document.body.appendChild(link);
                 link.click();
                 link.remove();
-                setLoading(false)
+                setLoadingIndex(null)
             })
             .catch((error) => {
                 console.log(error);
-                setLoading(false);
+                setLoadingIndex(null);
             })
     };
 
@@ -82,10 +82,10 @@ export default function FilesList({department, discipline, getAll}) {
                                 key={index}
                                 secondaryAction={
                                     <IconButton
-                                        loading={loading}
+                                        loading={loadingIndex === index}
                                         edge="end"
                                         aria-label="comments"
-                                        onClick={() => handleToggle(value)}
+                                        onClick={() => handleToggle(value, index)}
                                     ><FileDownloadIcon/>
                                     </IconButton>
                                 }
